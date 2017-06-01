@@ -69,6 +69,7 @@
 </nav>
 
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -91,9 +92,24 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
             <h1 class="page-header">Dashboard</h1>
-
-
+            <h2 class="sub-header">Section title</h2>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 35%"><span class="">35% Complete (success)</span></div>
+                <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+                <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
+            </div>
+            <h2 class="sub-header">Section title</h2>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 35%"><span class="">35% Complete (success)</span></div>
+                <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+                <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
+            </div>
 
             <h2 class="sub-header">Section title</h2>
             <div class="table-responsive">
@@ -113,7 +129,7 @@
                         <td>Lorem</td>
                         <td>ipsum</td>
                         <td>dolor</td>
-                        <td>sit</td>
+                        <td><button type="button" class="btn btn-xs btn-info">Info</button></td>
                     </tr>
                     <tr>
                         <td>1,002</td>
@@ -223,6 +239,25 @@
                     </tbody>
                 </table>
             </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
