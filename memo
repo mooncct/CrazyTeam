@@ -1,0 +1,44 @@
+
+项目信息：
+全称 China's young crazy team first
+简称 crazy team
+描述：为了方便小伙伴合租开发的系统
+
+项目技术：
+Laravel 5.4
+Bootstrap 3
+PHP >= 5.6.4
+Mysql 5.7.17
+
+
+项目状态：
+已有页面  欢迎页 登录 注册 财务页
+
+项目功能：第一个功能是 账单的财务管理
+
+其他：目前需要考虑的因素有  复杂的用户权限  可扩展性  美观性 PC和手机的兼容性 ·
+
+表结构：
+财务表	finance
+ID	finance_id
+名称	name
+发起时间	start_time
+跟新时间	update_time
+到期时间	update_time
+总金额	amount
+金额明细（N个用户平分）	details
+状态	state
+描述	describe
+
+用户表	users
+ID	users_id
+用户名	user
+密码	password
+邮箱	mail
+姓名	name
+
+明细表	Relate_users_finance
+ID	details_id
+用户ID	users_id
+账单ID	finance_id
+状态	state
