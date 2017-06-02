@@ -274,6 +274,7 @@ class ComposerStaticInita944c833f9afccd5640a9f1205e46e8e
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Finance' => __DIR__ . '/../..' . '/app/Finance.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -295,6 +296,7 @@ class ComposerStaticInita944c833f9afccd5640a9f1205e46e8e
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+        'ChangeFinanceTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_02_084259_change_finance_table.php',
         'CreateFinanceTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_01_072433_create_finance_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRelateUsersFinanceTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_01_075211_create_relate_users_finance_table.php',

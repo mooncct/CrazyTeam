@@ -16,6 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('finance','FinanceController@index');
+Route::get('finance/create','FinanceController@create')->middleware('auth');
+Route::post('finance/create','FinanceController@store');
+
+
+
+
 
 Auth::routes();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Finance;
 use Illuminate\Http\Request;
 
 class FinanceController extends Controller
@@ -13,7 +14,7 @@ class FinanceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //  $this->middleware('auth');
     }
 
     /**
@@ -33,7 +34,8 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        //
+        $list = Finance::get();
+        return view('finance.create');
     }
 
     /**
@@ -44,7 +46,22 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+        ];
+        $this->validate($request, $rules);
+        $article = new Finance();
+//        $article->user = \Auth::id();
+        $article->amount = $request->get('amount');
+        $article->name = $request->get('name');
+        $article->end_at = '2017-06-02 07:59:39';
+        $article->details = $request->get('details');
+        $article->describe = $request->get('describe');
+        $article->state = 0;
+        if($article->save()){
+            $url=url('finance');
+            return redirect($url);
+        }
     }
 
     /**
@@ -66,7 +83,7 @@ class FinanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        Finance::del($id);
     }
 
     /**
