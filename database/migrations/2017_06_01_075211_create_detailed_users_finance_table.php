@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelateUsersFinanceTable extends Migration
+class CreateDetailedUsersFinanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateRelateUsersFinanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('Relate_users_finance', function (Blueprint $table) {
+        Schema::create('detailed_users_finance', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('details_id');
+            $table->integer('finance_id');
             $table->integer('users_id');
-            $table->unsignedTinyInteger('state');
-            $table->timestamps();
+            $table->unsignedTinyInteger('state')->default(0)->comment('0未结清，1已结清');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateRelateUsersFinanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Relate_users_finance');
+        Schema::dropIfExists('detailed_users_finance');
     }
 }

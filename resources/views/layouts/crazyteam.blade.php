@@ -44,6 +44,7 @@
             </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
+
             <ul class="nav navbar-nav navbar-right">
                 @yield('link')
                 <li><a href="#">Dashboard</a></li>

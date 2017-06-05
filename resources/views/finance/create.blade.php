@@ -22,18 +22,21 @@
             <div class="col-sm-10">
                 <div class="input-group">
                     <div class="input-group-addon">￥</div>
-                    <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                    <input type="text" name="amount" class="form-control"
+                           id="exampleInputAmount" placeholder="0">
+
                 </div>
+                @if($errors->has('amount'))
+                    {{ $errors->first('amount') }}
+                @endif
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
 
-                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="cate shopping..." aria-label="Close">
-                @if($errors->has('name'))
-                    {{ $errors->first('name') }}
-                @endif
+                <input type="text" name="name" class="form-control"
+                       placeholder="The new consumer">
             </div>
         </div>
 
@@ -42,7 +45,8 @@
             <label for="inputPassword3" class="col-sm-2 control-label">Start time</label>
             <div class="col-sm-10">
 
-                <input type="datetime-local" name="start_at" class="form-control"
+                <input type="datetime-local" VALUE="{{ date("Y-m-d") }}T{{ date("m:s:i") }}" name="start"
+                       class="form-control"
                        aria-label="Amount (to the nearest dollar)">
 
             </div>
@@ -52,23 +56,23 @@
             <label for="inputPassword3" class="col-sm-2 control-label">End time</label>
             <div class="col-sm-10">
 
-                <input type="datetime-local" name="end_at" value="2017-07-01T22:00:00" class="form-control"
+                <input type="datetime-local" name="end"
+                       value="{{ date('Y-m-d', strtotime(date('Y-m-01', strtotime(date("Y-m-d")))." +1 month -1 day")) }}T22:00:01"
+                       class="form-control"
                        aria-label="Amount (to the nearest dollar)">
 
             </div>
         </div>
         <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">Participant</label>
+            <label for="inputPassword3" class="col-sm-2 control-label">Details</label>
             <div class="col-sm-10">
-                <label class="checkbox-inline">
-                    <input type="checkbox" name="details" checked id="inlineCheckbox1" value="1"> Catho
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" name="details" checked id="inlineCheckbox2" value="2"> Jojo
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" name="details" checked id="inlineCheckbox3" value="3"> Madeline
-                </label>
+                @foreach($users as $users )
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="details[]" checked id="inlineCheckbox1" value="{{ $users->id }}"> {{ $users->name
+                     }}
+                    </label>
+
+                @endforeach
             </div>
         </div>
         <div class="form-group">

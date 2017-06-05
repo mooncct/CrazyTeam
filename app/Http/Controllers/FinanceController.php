@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Finance;
+use App\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FinanceController extends Controller
 {
@@ -24,7 +26,8 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        return view('finance.index');
+        $finance = Finance::get();
+        return view('finance.index')->with('finance',$finance);
     }
 
     /**
@@ -34,8 +37,8 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        $list = Finance::get();
-        return view('finance.create');
+        $users = Users::get();
+        return view('finance.create')->with('users', $users);
     }
 
     /**
@@ -47,21 +50,27 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'amount' => 'Integer',
         ];
         $this->validate($request, $rules);
         $article = new Finance();
 //        $article->user = \Auth::id();
-        $article->amount = $request->get('amount');
-        $article->name = $request->get('name');
-        $article->end_at = '2017-06-02 07:59:39';
-        $article->details = $request->get('details');
-        $article->describe = $request->get('describe');
-        $article->state = 0;
-        if($article->save()){
+        $arr['amount'] = $request->get('amount');
+        $arr['name'] = $request->get('name') == null ? 'The new consumer' : $request->get('name');
+        $arr['start'] = str_replace('T', ' ', $request->get('start'));
+        $arr['end'] = str_replace('T', ' ', $request->get('end'));
+        $arr['describe'] = $request->get('describe');
+        $arr['created_at'] = date("Y-m-d h:m:i");
+        $arr['updated_at'] = date("Y-m-d h:m:i");
+        $insertGetId = DB::table('finance')->insertGetId($arr);
+        foreach ($request->get('details') as $v){
+//            echo $v;
+            DB::insert('insert into detailed_users_finance (finance_id,users_id) VALUES ('.$insertGetId.','.$v.')');
+        }
+
+
             $url=url('finance');
             return redirect($url);
-        }
     }
 
     /**

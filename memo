@@ -26,18 +26,10 @@ ID	finance_id
 跟新时间	update_time
 到期时间	end_time
 总金额	amount
-金额明细（N个用户平分）	details
-状态	state
 描述	describe
 
-用户表	users
-ID	users_id
-用户名	user
-密码	password
-邮箱	mail
-姓名	name
 
-明细表	Relate_users_finance
+明细表	detailed_users_finance
 ID	details_id
 用户ID	users_id
 账单ID	finance_id
