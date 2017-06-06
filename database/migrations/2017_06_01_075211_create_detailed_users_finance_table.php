@@ -17,6 +17,7 @@ class CreateDetailedUsersFinanceTable extends Migration
             $table->increments('id');
             $table->integer('finance_id');
             $table->integer('users_id');
+            $table->integer('money');
             $table->unsignedTinyInteger('state')->default(0)->comment('0未结清，1已结清');
         });
     }

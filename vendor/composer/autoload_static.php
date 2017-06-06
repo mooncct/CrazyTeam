@@ -15,6 +15,7 @@ class ComposerStaticInita944c833f9afccd5640a9f1205e46e8e
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '3484a5f6916149a513b73c42925ec79a' => __DIR__ . '/../..' . '/app/Common/function.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -293,11 +294,11 @@ class ComposerStaticInita944c833f9afccd5640a9f1205e46e8e
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Users' => __DIR__ . '/../..' . '/app/Users.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'CreateDetailedUsersFinanceTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_01_075211_create_detailed_users_finance_table.php',
-        'CreateFinanc1111eTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_05_030049_create_financ1111e_table.php',
         'CreateFinanceTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_05_030104_create_finance_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

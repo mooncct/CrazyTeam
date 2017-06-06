@@ -26,8 +26,24 @@ class FinanceController extends Controller
      */
     public function index()
     {
+        $users = Users::get();
+        $moneySum = DB::select('select SUM(money) as moneySum from detailed_users_finance ');
+        $money = array();
+        foreach ($users as $k => $v) {
+            $results= DB::select('select SUM(money) as moneySum from detailed_users_finance where users_id = ' . $v->id . '');
+            $money[$k]['money'] = numbers($results[0]->moneySum,2,2);
+            $money[$k]['name'] = $v['name'];
+            $money[$k]['proportion'] = $money[$k]['money']/$moneySum[0]->moneySum*100;
+        }
+//        dd($money);
+
         $finance = Finance::get();
-        return view('finance.index')->with('finance',$finance);
+        $data=array(
+            'finance'=>$finance,
+            'money'=>$money,
+            'moneySum'=>$moneySum,
+        );
+        return view('finance.index')->with($data);
     }
 
     /**
@@ -37,6 +53,7 @@ class FinanceController extends Controller
      */
     public function create()
     {
+
         $users = Users::get();
         return view('finance.create')->with('users', $users);
     }
@@ -50,7 +67,7 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'amount' => 'Integer',
+            'amount' => 'numeric',
         ];
         $this->validate($request, $rules);
         $article = new Finance();
@@ -62,15 +79,16 @@ class FinanceController extends Controller
         $arr['describe'] = $request->get('describe');
         $arr['created_at'] = date("Y-m-d h:m:i");
         $arr['updated_at'] = date("Y-m-d h:m:i");
+        dd($arr);
         $insertGetId = DB::table('finance')->insertGetId($arr);
-        foreach ($request->get('details') as $v){
-//            echo $v;
-            DB::insert('insert into detailed_users_finance (finance_id,users_id) VALUES ('.$insertGetId.','.$v.')');
+        $money = $arr['amount'] / 3;
+        foreach ($request->get('details') as $v) {
+            DB::insert('insert into detailed_users_finance (finance_id,users_id,money) VALUES (' . $insertGetId . ',' . $v . ',' . numbers($money, 10, 1) . ')');
         }
 
 
-            $url=url('finance');
-            return redirect($url);
+        $url = url('finance');
+        return redirect($url);
     }
 
     /**

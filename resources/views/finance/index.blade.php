@@ -7,83 +7,77 @@
 @endsection
 
 @section('content')
-
-
-
+    <div class="form-inline">
         <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">筛选条件</label>
-            <div class="col-sm-2">
-
-                <input type="datetime-local" name="end"
-                       value="{{ date('Y-m-d', strtotime(date('Y-m-01', strtotime(date("Y-m-d")))." +1 month -1 day")) }}T22:00:01"
-                       class="form-control"
-                       aria-label="Amount (to the nearest dollar)">
-
-            </div>
-            <div class="col-sm-2">
-            <button type="button" class="btn btn-default">筛选</button>
-            </div>
+            <label for="">开始时间</label>
+            <input type="date" class="form-control _screenStart" value="{{ date('Y-m-01', strtotime(date("Y-m-d"))) }}" id="">
         </div>
+        <div class="form-group">
+            <label for="">结束时间</label>
+            <input type="date" class="form-control _screenEnd" value="{{ date('Y-m-d') }}" id="">
+        </div>
+        <button type="button" class="btn btn-default">筛选</button>
+        <button onclick="location='{{ url('/finance/create') }}';" type="button" class="btn btn-default">添加</button>
+        <button type="button" class="btn btn-default _QuicklyClick" data-target="#myModal" data-toggle="modal">快速结清</button>
+
+
+    </div>
+
     <div class="page-header">
-        <h3>概况</h3>
-    </div>
-    <div class="progress">
-        <div class="progress-bar progress-bar-warning" style="width: 30%"><span
-                    class="">未结清￥100</span>
-        </div>
-        <div class="progress-bar progress-bar-info" style="width: 30%"><span
-                    class="">已经请￥100</span>
-        </div>
-        <div class="progress-bar progress-bar-danger" style="width: 40%"><span
-                    class="">总消费￥100</span>
-        </div>
-    </div>
-    <div class="page-header">
-        <h3>未结清 <small>点击姓名快速结清</small></h3>
+        <h3>概况 </h3>
     </div>
 
-    <div class="progress">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-            <span class="">Catho：100.00￥</span>
-        </div>
+
+
+
+    <div class="table-responsive">
+        <table class="table table-hover ">
+            <thead>
+            <th>未结清总支出:<span class="text-primary _moneySum">{{ numbers($moneySum[0]->moneySum,2,2) }}</span>￥</th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            @foreach($money as $money)
+                <tr class="">
+                    <td>{{ $money['name'] }}</td>
+                    <td>{{ $money['money'] }}￥</td>
+
+                    <td>
+                        <button type="button" class="btn btn-default btn-xs">结清</button>
+                    </td>
+
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 
-    <div class="progress">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-            <span class="">Jojo:100.00￥</span>
-        </div>
-    </div>
-
-    <div class="progress">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-            <span class="">Madeline:100.00￥</span>
-        </div>
-    </div>
     <div class="page-header">
         <h3>简单账单</h3>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover table-condensed">
             <thead>
             <tr>
-                <th>Amount</th>
-                <th>Name</th>
-                <th>Describe</th>
+                <th>支出</th>
+                <th>订单</th>
+                <th>用户</th>
+                <th>状态</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($finance as $finance)
-                <tr class="warning">
+                <tr>
                     <th scope="row">{{ $finance->amount }}</th>
                     <td>{{ $finance->name }}</td>
                     <td>catho,jojo</td>
+                    <td>@if($finance->users==1)已结清@else未结清@endif</td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-xs  btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-xs  btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
@@ -122,3 +116,37 @@
 
 
 @endsection
+
+
+
+
+@section('js')
+    <script src="{{ asset('js/finance/index.js') }}"></script>
+@endsection
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">快速结清</h4>
+            </div>
+            <div class="modal-body">
+                M同学
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary _Quickly" data-dismiss="modal" data-url="{{ url('/finance/create') }}">结清</button>
+            </div>
+        </div>
+    </div>
+</div>

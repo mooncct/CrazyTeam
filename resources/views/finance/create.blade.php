@@ -84,7 +84,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default btn-info">Create</button>
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="button" onclick="location='{{ url('/finance') }}';" class="btn btn-default">Cancel</button>
             </div>
         </div>
     </form>
