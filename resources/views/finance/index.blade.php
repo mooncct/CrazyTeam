@@ -33,7 +33,7 @@
     <div class="table-responsive">
         <table class="table table-hover ">
             <thead>
-            <th>未结清总支出:<span class="text-primary _moneySum">{{ numbers($moneySum[0]->moneySum,2,2) }}</span>￥</th>
+            <th>未结清总支出:<span class="text-primary _moneySum">{{ Numbers($moneySum[0]->moneySum,2,2) }}</span>￥</th>
             <th></th>
             <th></th>
             </thead>

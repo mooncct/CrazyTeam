@@ -18,19 +18,12 @@ Mysql 5.7.17
 
 其他：目前需要考虑的因素有  复杂的用户权限  可扩展性  美观性 PC和手机的兼容性 ·
 
-表结构：
-财务表	finance
-ID	finance_id
-名称	name
-发起时间	start_time
-跟新时间	update_time
-到期时间	end_time
-总金额	amount
-描述	describe
+备注
+快速结清 单用户结清功能
+buttont 添加样式 btn-info
+按条件查询
+记录结清状态
 
-
-明细表	detailed_users_finance
-ID	details_id
-用户ID	users_id
-账单ID	finance_id
-状态	state
+Table 更换datatables插件
+路由修改
+link修改

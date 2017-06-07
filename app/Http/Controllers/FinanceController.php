@@ -35,7 +35,6 @@ class FinanceController extends Controller
             $money[$k]['name'] = $v['name'];
             $money[$k]['proportion'] = $money[$k]['money']/$moneySum[0]->moneySum*100;
         }
-//        dd($money);
 
         $finance = Finance::get();
         $data=array(
@@ -83,7 +82,7 @@ class FinanceController extends Controller
         $insertGetId = DB::table('finance')->insertGetId($arr);
         $money = $arr['amount'] / 3;
         foreach ($request->get('details') as $v) {
-            DB::insert('insert into detailed_users_finance (finance_id,users_id,money) VALUES (' . $insertGetId . ',' . $v . ',' . numbers($money, 10, 1) . ')');
+            DB::insert('insert into detailed_users_finance (finance_id,users_id,money) VALUES (' . $insertGetId . ',' . $v . ',' . Numbers($money, 10, 1) . ')');
         }
 
 

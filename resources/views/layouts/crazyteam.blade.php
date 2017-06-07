@@ -7,33 +7,23 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="{{ asset('static/bootstrap/docs/favicon.ico') }}">
+
+    <title>Off Canvas Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{ asset('css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="{{ asset('js/ie8-responsive-file-warning.js') }}"></script><![endif]-->
+    <link href="{{ asset('static/bootstrap/docs/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('static/bootstrap/docs/examples/offcanvas/offcanvas.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/ie-emulation-modes-warning.js') }}"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="{{ asset('js/html5shiv.min.js') }}"></script>
-    <script src="{{ asset('js/respond.min.js') }}"></script>
-    <![endif]-->
 </head>
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -52,7 +42,8 @@
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Help</a></li>
                 <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">
                         Dropdown <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -70,7 +61,6 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
 
 
 <div class="container">
@@ -103,19 +93,12 @@
 </div><!-- /.container -->
 
 
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery.min.js') }}"><\/script>')</script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/offcanvas.js') }}"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="{{ asset('js/vendor/holder.min.js') }}"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
-
+<script src="{{ asset('static/jquery.min.js') }}"></script>
+<script src="{{ asset('static/bootstrap/docs/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('static/bootstrap/docs/examples/offcanvas/offcanvas.js') }}"></script>
 @yield('js')
 </body>
 </html>

@@ -9,5 +9,5 @@ $(function () {
     $(document).on('click', '._Quickly', function (e) {
         var start = $('._screenStart').val();
         var end = $('._screenEnd').val();
-      })
+    })
 })
